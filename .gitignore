@@ -1,5 +1,2 @@
 # Ignore virtual environments
 myenv/
-
-# Ignore node_modules directory
-frontend/node_modules/
