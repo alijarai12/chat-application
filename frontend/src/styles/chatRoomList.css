@@ -1,0 +1,23 @@
+/* src/styles/chatRoomList.css */
+
+.chatroom-list-container {
+    padding: 20px;
+}
+
+.chatroom-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.chatroom-list li {
+    margin-bottom: 10px;
+}
+
+.chatroom-list a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.chatroom-list a:hover {
+    text-decoration: underline;
+}

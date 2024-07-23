@@ -29,11 +29,21 @@ const Login = () => {
             username: formDetails.username,
             password: formDetails.password
         });
+
+        // Store the entire token object
+        localStorage.setItem('token', JSON.stringify(response.data.token));
+        console.log('Token stored:', localStorage.getItem('token')); // Add this line
+
+
         console.log('Login successful:', response.data);
         navigate('/');
       } catch (error) {
         console.error('There was a problem with the login:', error);
-        setError('Login failed. Please try again.');
+        if (error.response && error.response.data && error.response.data.error) {
+          setError(error.response.data.error.non_field_errors[0]);
+        } else {
+          setError('Login failed. Please try again.');
+        }
       }
     };
   
