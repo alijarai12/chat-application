@@ -26,8 +26,16 @@ const Chat = () => {
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log('WebSocket message received:', data); // Add this log
-      setMessages((prevMessages) => [...prevMessages, { sender: data.sender, content: data.content }]);
+      console.log('WebSocket message received:', data);
+
+      // Update messages only if the message is not already present
+      setMessages((prevMessages) => {
+        const messageExists = prevMessages.some((msg) => msg.id === data.id);
+        if (!messageExists) {
+          return [...prevMessages, { id: data.id, sender: data.sender, content: data.content }];
+        }
+        return prevMessages;
+      });
     };
 
     ws.onopen = () => {
@@ -51,10 +59,10 @@ const Chat = () => {
     // Cleanup function to close WebSocket connection on component unmount
     return () => {
       if (ws) {
-          console.log('Closing WebSocket connection');
-          ws.close();
+        console.log('Closing WebSocket connection');
+        ws.close();
       }
-  };
+    };
   }, [chatRoomId]);
 
   useEffect(() => {
@@ -81,11 +89,12 @@ const Chat = () => {
             'Authorization': `Bearer ${token.access}`,
           },
         });
-        console.log('Fetched messages:', response.data); // Add this log
+        console.log('Fetched messages:', response.data);
         if (response.data.length === 0) {
           setError('No messages found');
         } else {
-          setMessages(response.data);
+          // Add unique ID to messages if needed
+          setMessages(response.data.map((msg, index) => ({ ...msg, id: index })));
           setError('');
         }
       } catch (error) {
@@ -107,10 +116,14 @@ const Chat = () => {
 
   const handleSendMessage = () => {
     if (socket && socket.readyState === WebSocket.OPEN) {
-      console.log('Sending message:', messageInput); // Add this log
-      socket.send(JSON.stringify({
+      console.log('Sending message:', messageInput);
+      const messageId = Date.now(); // Generate unique ID for the message
+      const message = {
+        id: messageId,
         content: messageInput,
-      }));
+      };
+
+      socket.send(JSON.stringify(message));
       setMessageInput(''); // Clear the input after sending the message
     } else {
       setError('WebSocket connection is not established.');
@@ -124,9 +137,9 @@ const Chat = () => {
         <h2 className="chat-room-title">{chatRoom?.name}</h2>
         {error && <p className="error-message">{error}</p>}
         <div className="messages-container">
-          {messages.map((message, index) => (
-            <div key={index} className="message">
-              <div className="message-sender">{message.sender_name}</div>
+          {messages.map((message) => (
+            <div key={message.id} className="message">
+              <div className="message-sender">{message.sender}</div>
               <div className="message-content">{message.content}</div>
             </div>
           ))}
