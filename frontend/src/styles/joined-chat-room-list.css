@@ -1,0 +1,81 @@
+/* Styles for ListJoinedChatRoom Component */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9; /* Light gray background for the page */
+  }
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar is on top */
+  }
+  
+  .joined-chat-room-list-container {
+    flex: 1;
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 1200px;
+    width: 100%;
+    background: #ffffff; /* White background for the list container */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+  }
+  
+  .joined-chat-room-list-container h2 {
+    font-size: 1.75rem;
+    color: #333; /* Dark gray text color */
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .chat-room-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .chat-room-item {
+    background-color: #f9f9f9; /* Light gray background for items */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 8px;
+    padding: 1rem;
+    transition: background-color 0.2s, transform 0.2s;
+    cursor: pointer; /* Pointer cursor for clickable items */
+  }
+  
+  .chat-room-item:hover {
+    background-color: #f0f0f0; /* Slightly darker on hover */
+    transform: scale(1.01); /* Subtle zoom effect */
+  }
+  
+  .chat-room-link {
+    text-decoration: none;
+    color: #007bff; /* Blue color for links */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .chat-room-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .error {
+    color: #dc3545; /* Red for errors */
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  
+  .no-chat-rooms {
+    color: #6c757d; /* Gray for empty state */
+    font-size: 1rem;
+  }
+  

@@ -139,7 +139,7 @@ const Chat = () => {
         <div className="messages-container">
           {messages.map((message) => (
             <div key={message.id} className="message">
-              <div className="message-sender">{message.sender}</div>
+              <div className="message-sender">{message.sender_name}</div>
               <div className="message-content">{message.content}</div>
             </div>
           ))}

@@ -1,34 +1,75 @@
-/* src/styles/navbar.css */
+/* Navbar Styles */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 1rem;
-  }
-  
-  .navbar-logo {
-    color: #fff;
-    font-size: 1.5rem;
-  }
-  
-  .navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .navbar-links li {
-    display: inline;
-  }
-  
-  .navbar-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  
-  .navbar-links a:hover {
-    text-decoration: underline;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff; /* White background for navbar */
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+/* Logo Styling */
+.navbar-logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem; /* Space between items */
+  flex-wrap: wrap; /* Allow wrapping if space is insufficient */
+}
+
+/* Individual Navbar Item */
+.navbar-links li {
+  margin: 0;
+  flex: 1; /* Allow items to take up available space */
+}
+
+/* Link Styling */
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Button Styles */
+.btn {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-logout {
+  background-color: #ff4d4d; /* Red for logout button */
+  color: #fff;
+}
+
+.btn-logout:hover {
+  background-color: #e03e3e; /* Darker red on hover */
+  transform: translateY(-2px); /* Lift effect */
+}

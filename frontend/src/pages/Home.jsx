@@ -1,23 +1,24 @@
-// src/pages/Home.jsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
-import ChatRoomList from '../components/ChatRoomList';
+import '../styles/home.css'; // Import the CSS file for styling
 
 const Home = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-  }, []);
-
   return (
-    <div>
+    <div className="home-container">
       <Navbar />
-      <h2>Home Section</h2>
-      <h3></h3>
-
-      {isLoggedIn && <ChatRoomList />}
+      <div className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">Welcome to ChatApp</h1>
+          <p className="hero-subtitle">A sleek, modern chat experience.</p>
+          <div className="action-buttons">
+            <button className="btn-primary">Start Chatting</button>
+            <button className="btn-secondary">Explore Features</button>
+          </div>
+        </div>
+      </div>
+      <footer className="footer">
+        <p>&copy; 2024 ChatApp. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

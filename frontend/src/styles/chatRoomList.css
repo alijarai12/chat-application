@@ -1,23 +1,64 @@
-/* src/styles/chatRoomList.css */
-
-.chatroom-list-container {
+/* Container to hold both chatroom list and create chatroom components side by side */
+.chatroom-page-container {
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
-}
-
-.chatroom-list {
-    list-style-type: none;
+  }
+  
+  /* Styles for chatroom list container */
+  .chatroom-list-container,
+  .create-chatroom-container {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Specify a fixed or maximum height */
+  .chatroom-list-container {
+    height: 400px; /* Adjust this value as needed */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  }
+  
+  .chatroom-list-container h2,
+  .create-chatroom-container h2 {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .chatroom-list {
+    list-style: none;
     padding: 0;
-}
-
-.chatroom-list li {
+  }
+  
+  .chatroom-item {
     margin-bottom: 10px;
-}
-
-.chatroom-list a {
-    text-decoration: none;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .chatroom-item:hover {
+    background-color: #e1e1e1;
+  }
+  
+  .chatroom-name {
+    font-size: 1.25rem;
     color: #007bff;
-}
-
-.chatroom-list a:hover {
+  }
+  
+  .chatroom-name:hover {
     text-decoration: underline;
-}
+  }
+  
+  /* Styles for create chatroom container */
+  .create-chatroom-container {
+    flex: 1;
+  }
+  
