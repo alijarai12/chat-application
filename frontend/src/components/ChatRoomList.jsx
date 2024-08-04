@@ -35,7 +35,7 @@ const ChatRoomList = () => {
   return (
     <div className="chatroom-page-container">
       <div className="chatroom-list-container">
-        <h2>Chat Rooms</h2>
+        <h2>List of Chat Rooms</h2>
         <ul className="chatroom-list">
           {chatRooms.map((chatRoom) => (
             <li key={chatRoom.id} className="chatroom-item">
