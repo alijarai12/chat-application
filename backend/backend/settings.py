@@ -161,6 +161,16 @@ CHANNEL_LAYERS = {
 }
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Your SMTP server address
+EMAIL_PORT = 587  # Typically 587 for TLS or 465 for SSL
+EMAIL_USE_TLS = True  # Set to True if you're using TLS
+EMAIL_USE_SSL = False  # Set to True if you're using SSL
+EMAIL_HOST_USER = 'alijarai414@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'wphq osnc kfnp ltqm'  # Your email account password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -182,23 +192,23 @@ SIMPLE_JWT = {
 }
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
-        'app': {  # Replace with your app's name
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#         'app': {  # Replace with your app's name
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#     },
+# }

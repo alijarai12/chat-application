@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -33,6 +34,15 @@ class UserRegistrationView(APIView):
             user = serializer.save()
 
             token = get_tokens_for_user(user)
+
+
+            # Send a confirmation email
+            subject = 'Welcome to Our Realtime Chat App'
+            message = f'Thank you for registering, {user.username}!\nYour registration was successful.'
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [user.email]
+
+            send_mail(subject, message, from_email, recipient_list)
             return Response({'token':token, 'msg':'register success'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
